@@ -24,10 +24,9 @@ module.exports = (appInfo) => {
             enable: false,
         },
     };
-
     // 跨域
     config.cors = {
-        origin: "http://192.168.3.29:8080",
+        origin: "http://127.0.0.1:8080",
         credentials: true,
     };
 
@@ -57,7 +56,7 @@ module.exports = (appInfo) => {
             port: 3306,
             user: "root",
             password: "root",
-            database: "library",
+            database: "gourmet",
         },
     };
 

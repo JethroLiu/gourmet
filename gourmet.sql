@@ -10,6 +10,19 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+-- 导出  表 gourmet.advise 结构
+CREATE TABLE IF NOT EXISTS `advise` (
+  `id` int(16) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) DEFAULT NULL COMMENT '图片',
+  `wordsone` varchar(255) DEFAULT NULL COMMENT '标题',
+  `wordstwo` varchar(255) DEFAULT NULL COMMENT '标题一',
+  `wordsthree` varchar(255) DEFAULT NULL COMMENT '标题二',
+  `wordsfour` varchar(255) DEFAULT NULL COMMENT '标题三',
+  `wordsfive` varchar(255) DEFAULT NULL COMMENT '标题四',
+  `wordssix` varchar(255) DEFAULT NULL COMMENT '标题五',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='建议表';
+
 -- 正在导出表  gourmet.advise 的数据：~3 rows (大约)
 DELETE FROM `advise`;
 /*!40000 ALTER TABLE `advise` DISABLE KEYS */;
@@ -18,6 +31,15 @@ INSERT INTO `advise` (`id`, `image`, `wordsone`, `wordstwo`, `wordsthree`, `word
 	(2, 'http://127.0.0.1:7001/public/advice/baking.jpg', '这些挑水果小窍门，你知道吗？', '网红肉松小贝，在家就能做！', '内藏惊喜的彩虹戚风蛋糕', '消耗蛋挞皮－简单版红薯酥', '菜单┊奥利奥的N种百搭吃法', '专题┊另类咸香口儿 满足你的味蕾！'),
 	(3, 'http://127.0.0.1:7001/public/advice/recommend.jpg', '合理饮食，远离脂肪肝', '划重点！食物降血脂这些更有效', '粗粮细作：健康能量燕麦甜品', '妈妈派┊童趣童味，儿童创意餐点', '免费抽奖┊ACA ATO-HB38HT电烤箱', '专题┊酒后头痛，5种食物可缓解');
 /*!40000 ALTER TABLE `advise` ENABLE KEYS */;
+
+-- 导出  表 gourmet.book 结构
+CREATE TABLE IF NOT EXISTS `book` (
+  `id` int(16) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '名称',
+  `content` varchar(255) DEFAULT NULL COMMENT '描述',
+  `image` varchar(255) DEFAULT NULL COMMENT '图片',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- 正在导出表  gourmet.book 的数据：~14 rows (大约)
 DELETE FROM `book`;
@@ -39,10 +61,29 @@ INSERT INTO `book` (`id`, `name`, `content`, `image`) VALUES
 	(14, '猪里脊', '超嫩小鲜肉', 'http://127.0.0.1:7001/public/book/zhuliji.jpg');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 
+-- 导出  表 gourmet.book_type 结构
+CREATE TABLE IF NOT EXISTS `book_type` (
+  `id` int(16) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL COMMENT '名称',
+  `part` int(16) DEFAULT NULL COMMENT '分区',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
 -- 正在导出表  gourmet.book_type 的数据：~0 rows (大约)
 DELETE FROM `book_type`;
 /*!40000 ALTER TABLE `book_type` DISABLE KEYS */;
 /*!40000 ALTER TABLE `book_type` ENABLE KEYS */;
+
+-- 导出  表 gourmet.food 结构
+CREATE TABLE IF NOT EXISTS `food` (
+  `id` int(16) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL COMMENT '菜谱标题',
+  `userId` char(20) DEFAULT NULL COMMENT '发表用户',
+  `image` varchar(255) DEFAULT NULL COMMENT '主页菜谱图片',
+  `alone` varchar(255) DEFAULT NULL COMMENT '独家 tag',
+  `typeId` int(16) DEFAULT NULL COMMENT '分类 id ',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- 正在导出表  gourmet.food 的数据：~20 rows (大约)
 DELETE FROM `food`;
@@ -70,6 +111,14 @@ INSERT INTO `food` (`id`, `title`, `userId`, `image`, `alone`, `typeId`) VALUES
 	(20, '香草烤猪臀肉', 'rosejyy2000', 'http://127.0.0.1:7001/public/food/f20.jpg', '1', 5);
 /*!40000 ALTER TABLE `food` ENABLE KEYS */;
 
+-- 导出  表 gourmet.food_type 结构
+CREATE TABLE IF NOT EXISTS `food_type` (
+  `id` int(16) NOT NULL AUTO_INCREMENT,
+  `name` char(50) DEFAULT NULL COMMENT '分类名称',
+  `part` int(16) DEFAULT NULL COMMENT '分区',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
 -- 正在导出表  gourmet.food_type 的数据：~6 rows (大约)
 DELETE FROM `food_type`;
 /*!40000 ALTER TABLE `food_type` DISABLE KEYS */;
@@ -81,6 +130,14 @@ INSERT INTO `food_type` (`id`, `name`, `part`) VALUES
 	(5, '米饭', 5),
 	(6, '微辣', 2);
 /*!40000 ALTER TABLE `food_type` ENABLE KEYS */;
+
+-- 导出  表 gourmet.lbt 结构
+CREATE TABLE IF NOT EXISTS `lbt` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `images` varchar(255) DEFAULT NULL COMMENT '轮播图片',
+  `url` varchar(255) DEFAULT NULL COMMENT '链接地址',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- 正在导出表  gourmet.lbt 的数据：~6 rows (大约)
 DELETE FROM `lbt`;
@@ -94,6 +151,19 @@ INSERT INTO `lbt` (`id`, `images`, `url`) VALUES
 	(6, 'http://127.0.0.1:7001/public/lbt/6.jpg', NULL);
 /*!40000 ALTER TABLE `lbt` ENABLE KEYS */;
 
+-- 导出  表 gourmet.myuser 结构
+CREATE TABLE IF NOT EXISTS `myuser` (
+  `id` int(16) NOT NULL AUTO_INCREMENT COMMENT '用户 id',
+  `userName` varchar(255) DEFAULT NULL COMMENT '用户昵称',
+  `userPwd` varchar(255) DEFAULT NULL COMMENT '用户密码',
+  `userPic` varchar(255) DEFAULT NULL COMMENT '用户头像',
+  `userSex` varchar(255) DEFAULT NULL COMMENT '用户性别',
+  `address` varchar(255) DEFAULT NULL COMMENT '用户地址',
+  `email` varchar(255) DEFAULT NULL COMMENT '电子邮箱',
+  `says` varchar(255) DEFAULT NULL COMMENT '个性签名',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+
 -- 正在导出表  gourmet.myuser 的数据：~3 rows (大约)
 DELETE FROM `myuser`;
 /*!40000 ALTER TABLE `myuser` DISABLE KEYS */;
@@ -102,6 +172,15 @@ INSERT INTO `myuser` (`id`, `userName`, `userPwd`, `userPic`, `userSex`, `addres
 	(2, '食●色', 'ss123456', 'https://i5.meishichina.com/data/avatar/006/10/08/32_avatar_big.jpg', '女', '四川成都', '15632856941@qq.com', NULL),
 	(3, 'C00K100@@', 'cook123456', 'https://i5.meishichina.com/data/avatar/000/40/41/88_avatar_big.jpg', '女', '贵州铜仁', '12364589632@qq.com', NULL);
 /*!40000 ALTER TABLE `myuser` ENABLE KEYS */;
+
+-- 导出  表 gourmet.shop 结构
+CREATE TABLE IF NOT EXISTS `shop` (
+  `id` int(16) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) DEFAULT NULL COMMENT '图片',
+  `name` varchar(255) DEFAULT NULL COMMENT '名称',
+  `price` float(32,0) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- 正在导出表  gourmet.shop 的数据：~20 rows (大约)
 DELETE FROM `shop`;
@@ -128,6 +207,22 @@ INSERT INTO `shop` (`id`, `image`, `name`, `price`) VALUES
 	(19, 'http://127.0.0.1:7001/public/shop/19.jpg', '华为平板电脑 M6 10.8英寸', 2299),
 	(20, 'http://127.0.0.1:7001/public/shop/20.jpg', 'Harthsun 牛排煎锅', 729);
 /*!40000 ALTER TABLE `shop` ENABLE KEYS */;
+
+-- 导出  表 gourmet.topic 结构
+CREATE TABLE IF NOT EXISTS `topic` (
+  `id` int(16) NOT NULL AUTO_INCREMENT,
+  `userId` int(16) DEFAULT NULL COMMENT '用户 id',
+  `proDate` datetime DEFAULT NULL COMMENT '发表时间',
+  `article` text COMMENT '内容',
+  `image1` char(255) DEFAULT NULL COMMENT '图片1',
+  `image2` varchar(255) DEFAULT NULL COMMENT '图片2',
+  `image3` varchar(255) DEFAULT NULL COMMENT '图片3',
+  `image4` varchar(255) DEFAULT NULL COMMENT '图片4',
+  `image5` varchar(255) DEFAULT NULL COMMENT '图片5',
+  `image6` varchar(255) DEFAULT NULL COMMENT '图片6',
+  `title` varchar(255) DEFAULT NULL COMMENT '动态标题',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 -- 正在导出表  gourmet.topic 的数据：~3 rows (大约)
 DELETE FROM `topic`;

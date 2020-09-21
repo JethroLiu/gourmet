@@ -1,6 +1,20 @@
 <template>
 <<<<<<< HEAD
   <div id="index">
+	  <Topbar></Topbar>
+  </div>
+  
+</template>
+<script>
+	import Topbar from "@/components/header/Topbar";
+export default {	
+  components: {
+	 Topbar, 
+  },
+  
+=======
+<<<<<<< HEAD
+  <div id="index">
   </div>
 </template>
 <script>
@@ -9,6 +23,7 @@ export default {
   components: {
 	
   },
+>>>>>>> 3300f3ccf0ae0a1320eb5c2889921a00bb84b0f3
 };
 </script>
 

@@ -27,7 +27,7 @@ module.exports = (appInfo) => {
 
     // 跨域
     config.cors = {
-        origin: "http://192.168.3.29:8080",
+        origin: "http://127.0.0.1:8080",
         credentials: true,
     };
 
@@ -51,15 +51,15 @@ module.exports = (appInfo) => {
     };
 
     // 数据库配置
-    config.mysql = {
-        client: {
-            host: "localhost",
-            port: 3306,
-            user: "root",
-            password: "root",
-            database: "library",
-        },
-    };
+    // config.mysql = {
+    //     client: {
+    //         host: "localhost",
+    //         port: 3306,
+    //         user: "root",
+    //         password: "root",
+    //         database: "gourmet",
+    //     },
+    // };
 
     // add your user config here
     const userConfig = {

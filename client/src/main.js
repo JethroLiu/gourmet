@@ -2,9 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
-// import VueAwesomeSwiper from 'vue-awesome-swiper';
-// import 'swiper/dist/css/swiper.css';
-// Vue.use( VueAwesomeSwiper);
+
 
 // 配置全局的 axios 基础网址，可以只写路由了
 // 但是并不影响 绝对网络路径的请求

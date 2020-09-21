@@ -8,9 +8,7 @@ const routes = [
         path: "/",
         name: "Index",
         component: () => import("../views/Index.vue"),
-        children: [],
     },
-    {},
 ];
 
 const router = new VueRouter({

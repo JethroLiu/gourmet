@@ -13,7 +13,7 @@
 -- 正在导出表  gourmet.advise 的数据：~3 rows (大约)
 DELETE FROM `advise`;
 /*!40000 ALTER TABLE `advise` DISABLE KEYS */;
-INSERT INTO `advise` (`id`, `image`, `titleone`, `titletwo`, `titlethree`, `titlefour`, `titlefive`, `titlesix`) VALUES
+INSERT INTO `advise` (`id`, `image`, `wordsone`, `wordstwo`, `wordsthree`, `wordsfour`, `wordsfive`, `wordssix`) VALUES
 	(1, 'http://127.0.0.1:7001/public/advice/health.jpg', '降血压食物推荐，从日常开始改善！', '日常按摩这些部位，养生更养身', '脑溢血原因，冬天要更注意', '孩子体质差总生病，父母该怎么办？', '专题┊那些美颜食物的神级吃法', '专题┊低卡减肥餐，让你瘦到飞起来'),
 	(2, 'http://127.0.0.1:7001/public/advice/baking.jpg', '这些挑水果小窍门，你知道吗？', '网红肉松小贝，在家就能做！', '内藏惊喜的彩虹戚风蛋糕', '消耗蛋挞皮－简单版红薯酥', '菜单┊奥利奥的N种百搭吃法', '专题┊另类咸香口儿 满足你的味蕾！'),
 	(3, 'http://127.0.0.1:7001/public/advice/recommend.jpg', '合理饮食，远离脂肪肝', '划重点！食物降血脂这些更有效', '粗粮细作：健康能量燕麦甜品', '妈妈派┊童趣童味，儿童创意餐点', '免费抽奖┊ACA ATO-HB38HT电烤箱', '专题┊酒后头痛，5种食物可缓解');

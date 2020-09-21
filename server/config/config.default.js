@@ -24,7 +24,6 @@ module.exports = (appInfo) => {
             enable: false,
         },
     };
-
     // 跨域
     config.cors = {
         origin: "http://127.0.0.1:8080",

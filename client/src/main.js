@@ -2,6 +2,11 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
+// element-ui
+import ElementUI from "element-ui"; // 引入组件库
+import "element-ui/lib/theme-chalk/index.css"; // 全局的css样式
+
+Vue.use(ElementUI);
 
 // 配置全局的 axios 基础网址，可以只写路由了
 // 但是并不影响 绝对网络路径的请求

@@ -51,15 +51,15 @@ module.exports = (appInfo) => {
     };
 
     // 数据库配置
-    // config.mysql = {
-    //     client: {
-    //         host: "localhost",
-    //         port: 3306,
-    //         user: "root",
-    //         password: "root",
-    //         database: "gourmet",
-    //     },
-    // };
+    config.mysql = {
+        client: {
+            host: "localhost",
+            port: 3306,
+            user: "root",
+            password: "root",
+            database: "gourmet",
+        },
+    };
 
     // add your user config here
     const userConfig = {

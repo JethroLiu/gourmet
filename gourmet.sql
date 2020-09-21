@@ -11,10 +11,10 @@
  Target Server Version : 50173
  File Encoding         : 65001
 
- Date: 21/09/2020 12:01:01
+ Date: 21/09/2020 13:01:01
 */
 
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------

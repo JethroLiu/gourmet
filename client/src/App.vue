@@ -14,4 +14,12 @@ export default {
 </script>
 
 <style>
+*{
+	padding: 0;
+	margin: 0;
+}
+.w{
+	width: 990px;
+	margin: 0 auto;
+}
 </style>

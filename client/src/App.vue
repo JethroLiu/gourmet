@@ -2,7 +2,10 @@
   <div id="app">
     <!-- 首页 -->
     <Index></Index>
+	
+	 
   </div>
+ 
 </template>
 <script>
 import Index from "@/views/Index";

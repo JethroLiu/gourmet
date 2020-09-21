@@ -1,9 +1,16 @@
 <template>
-  <div id="index"></div>
+  <div id="index">
+	  <Topbar></Topbar>
+  </div>
+  
 </template>
 <script>
-export default {
-  components: {},
+	import Topbar from "@/components/header/Topbar";
+export default {	
+  components: {
+	 Topbar, 
+  },
+  
 };
 </script>
 

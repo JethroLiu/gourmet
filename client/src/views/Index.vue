@@ -6,6 +6,7 @@
     <Advice></Advice>
   </div>
 </template>
+
 <script>
 import Topbar from "@/components/header/Topbar";
 import Logo from "@/components/header/Logo";

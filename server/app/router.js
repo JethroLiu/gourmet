@@ -10,4 +10,5 @@ module.exports = (app) => {
     router.get("/food", controller.home.food); //food  新秀菜谱 一周热度
     router.get("/book", controller.home.book); //book  时令食材
     router.get("/topic", controller.home.topic); //话题
+    router.get("/verification", controller.user.verification); //话题
 };

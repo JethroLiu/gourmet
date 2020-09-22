@@ -6,11 +6,14 @@ class UserService extends Service {
     async verification() {
         const { ctx } = this;
         const data = svgCaptcha.create({
-            size: 4,
+            size: 4, // 验证码长度
+            noise: 3, // 线条
+            ignoreChars: "0o1i", // 验证码字符中排除 0o1i
             fontSize: 50,
             width: 100,
             height: 40,
-            background: "#cc9966",
+            color: true, // 随机线条颜色
+            background: "#f1f3f4",
         });
         // 为每一个请求的ip地址开辟一篇空间，用来存储只属于这个用户的数据
         // session 的属性名是自定义的，用来保存某个数据

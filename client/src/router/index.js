@@ -88,17 +88,23 @@ const router = new VueRouter({
 // 全局前置守卫 访问拦截
 router.beforeEach((to, from, next) => {
     // 允许访问首页和登录注册
-    if (to.path == "/" || to.path == "/Login" || to.path == "/Register") {
-        next();
-    } else {
-        // 查看用户是否登录
-        let flag = localStorage.getItem("islogin"); // 取本地缓存查看是否登陆过
-        if (flag) {
-            next();
-        } else {
-            next("/Login"); // next 也会触发 beforeEach
-        }
+    // if (to.path == "/" || to.path == "/MyUser/Login") {
+    //     next();
+    // } else {
+    //     // 查看用户是否登录
+    //     let flag = localStorage.getItem("islogin"); // 取本地缓存查看是否登陆过
+    //     if (flag) {
+    //         next();
+    //     } else {
+    //         next("/Login"); // next 也会触发 beforeEach
+    //     }
+    // }
+
+    if (to.path == "/Publish") {
+        alert("全局前置守卫拦截了你的访问");
+        next("/MyUser/Login");
     }
+    next();
 });
 
 export default router;

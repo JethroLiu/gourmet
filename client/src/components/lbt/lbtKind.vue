@@ -1,9 +1,9 @@
 <template>
 	<div class="lbt-kind">
-		<ul><li v-for="el in data"><a href="###" v-text="el.title" class="bb"></a><span>></span>
+		<ul><li v-for="(el,index1) in data" :key='index1'><a href="###" v-text="el.title" class="bb"></a><span>></span>
 			<div class="lbt-kind-content">
 				<div class="sbox">
-					<a href="###" v-for='item in el.data' v-text='item' class="lbt-kind-content-item" style="{color: #000;}">lbt-kind-content</a>
+					<a href="###" v-for='(item ,index2)in el.data'  :key="index2" v-text='item' class="lbt-kind-content-item" >lbt-kind-content</a>
 				</div>
 			</div>
 			</li>

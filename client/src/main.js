@@ -8,9 +8,7 @@ import "element-ui/lib/theme-chalk/index.css"; // 全局的css样式
 
 Vue.use(ElementUI);
 
-
-// 配置全局的 axios 基础网址，可以只写路由了
-// 但是并不影响 绝对网络路径的请求
+// 配置全局的 axios 基础网址
 axios.defaults.baseURL = "http://127.0.0.1:7001";
 
 // 允许请求时携带 cookie

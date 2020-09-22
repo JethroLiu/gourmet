@@ -1,6 +1,5 @@
 <template>
   <div id="index">
-    <Topbar></Topbar>
     <Logo></Logo>
     <Lbt></Lbt>
     <Advice></Advice>
@@ -13,19 +12,17 @@
 </template>
 
 <script>
-import Topbar from "@/components/header/Topbar";
-import Logo from "@/components/header/Logo";
-import Lbt from "@/components/lbt/Lbt";
-import Advice from "@/components/advice/Advice";
-import Book from "@/components/Book/Book";
-import Food from "@/components/food/Food";
-import Title from "@/components/food/Title";
-import Topic from "@/components/topic/Topic";
-import Footer from "@/components/footer/Footer";
+import Logo from "@/components/Index/header/Logo";
+import Lbt from "@/components/Index/lbt/Lbt";
+import Advice from "@/components/Index/advice/Advice";
+import Book from "@/components/Index/Book/Book";
+import Food from "@/components/Index/food/Food";
+import Title from "@/components/Index/food/Title";
+import Topic from "@/components/Index/topic/Topic";
+import Footer from "@/components/Index/footer/Footer";
 
 export default {
   components: {
-    Topbar,
     Logo,
     Lbt,
     Advice,
@@ -39,4 +36,7 @@ export default {
 </script>
 
 <style scoped>
+#index {
+  margin-top: 40px;
+}
 </style>

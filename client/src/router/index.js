@@ -9,6 +9,16 @@ const routes = [
         name: "Index",
         component: () => import("../views/Index.vue"),
     },
+    {
+        path: "/Details",
+        name: "Details",
+        component: () => import("../views/Details.vue"),
+    },
+    {
+        path: "/FoodBook",
+        name: "FoodBook",
+        component: () => import("../views/FoodBook.vue"),
+    },
 ];
 
 const router = new VueRouter({

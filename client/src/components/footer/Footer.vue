@@ -2,7 +2,7 @@
   <div id="footer" class="w">
     <router-link to="##" class="redTitle">{{redText}}</router-link>
     <p class="bout">
-      <router-link></router-link>
+      <router-link to="##"></router-link>
     </p>
   </div>
 </template>

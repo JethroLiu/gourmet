@@ -22,6 +22,15 @@ export default {
   async mounted() {
     let result = await this.$axios.get("/advice");
     this.adData = result.data;
+    this.adData[0].title1 = "健康";
+    this.adData[0].title2 = "食疗";
+    this.adData[0].title3 = "健康首页";
+    this.adData[1].title1 = "烘焙";
+    this.adData[1].title2 = "食谱";
+    this.adData[1].title3 = "烘焙专区";
+    this.adData[2].title1 = "为您推荐";
+    this.adData[2].title2 = "";
+    this.adData[2].title3 = "我的收藏";
   },
 };
 </script>

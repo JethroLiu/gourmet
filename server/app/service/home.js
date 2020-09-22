@@ -73,9 +73,15 @@ class HomeService extends Service {
 
     //book2  具体菜品2展示
     async book() {
+<<<<<<< HEAD
+        var data = await this.app.mysql.query(" select * from book")
+        return data;
+        // return "book2  具体菜品展示2 "
+=======
         // var data = await this.app.mysql.query(" select * from book")
         // return data;
         return "book2  具体菜品展示2 ";
+>>>>>>> b50650a332c29f026209ce278ab12840889514c6
     }
 
     //话题

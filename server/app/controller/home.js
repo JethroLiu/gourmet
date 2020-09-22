@@ -21,21 +21,19 @@ class HomeController extends Controller {
     async food() {
         const { ctx } = this;
         ctx.body = await this.ctx.service.home.food();
-        console.log(ctx.body);
+        // console.log(ctx.body);
     }
 
     //book2  具体菜品展示
     async book() {
         const { ctx } = this;
         ctx.body = await this.ctx.service.home.book();
-        console.log(ctx.body);
     }
 
     //话题
     async topic() {
         const { ctx } = this;
         ctx.body = await this.ctx.service.home.topic();
-        console.log(ctx.body);
     }
 }
 

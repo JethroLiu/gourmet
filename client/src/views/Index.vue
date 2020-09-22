@@ -5,6 +5,10 @@
     <Lbt></Lbt>
     <Advice></Advice>
     <Book></Book>
+    <Title></Title>
+    <Food></Food>
+    <Topic></Topic>
+    <Footer></Footer>
   </div>
 </template>
 
@@ -14,6 +18,11 @@ import Logo from "@/components/header/Logo";
 import Lbt from "@/components/lbt/Lbt";
 import Advice from "@/components/advice/Advice";
 import Book from "@/components/Book/Book";
+import Food from "@/components/food/Food";
+import Title from "@/components/food/Title";
+import Topic from "@/components/topic/Topic";
+import Footer from "@/components/footer/Footer";
+
 export default {
   components: {
     Topbar,
@@ -21,6 +30,10 @@ export default {
     Lbt,
     Advice,
     Book,
+    Food,
+    Title,
+    Topic,
+    Footer,
   },
 };
 </script>

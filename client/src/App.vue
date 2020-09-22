@@ -33,7 +33,6 @@
 </template>
 
 <script>
-import FoodBook from "@/views/FoodBook";
 export default {
   data() {
     return {

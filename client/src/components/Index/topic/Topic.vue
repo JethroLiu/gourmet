@@ -53,8 +53,8 @@ export default {
     let result = await this.$axios.get("/topic");
     this.topiccontent = result.data;
     console.log(this.topiccontent); //[{},{},{},{}]
-    for(var el in this.topiccontent){
-        console.log(el)
+    for(let el in this.topiccontent){
+        
     }
 
   },

@@ -1,17 +1,27 @@
 <template>
-  <div class="w">
+  <div id="food" class="w">
+    <div class="food">
+      <!-- 菜谱左边 -->
+      <div class="foodleft">
+        <a href="##" class="leftitem">
+          <h3 class="h3 xinxiu">新秀菜谱</h3>
+          <h3 class="h3">一周热门</h3>
+          <h3 class="h3">最受欢迎的家常菜</h3>
+        </a>
+      </div>
+      <!-- 菜谱右边 -->
+      <div class="foodright">
+        <!-- <router-link to="##" v-for="item in foodItem1" :key="item">{{item}}</router-link> -->
+      </div>
+    </div>
     <div class="foodbox">
-      <div
-        class="foodkinds"
-        v-for="foodobj in foodMun"
-        :key="foodobj.id"
-        @click="toDetails(foodobj.id)"
-      >
+      <div class="foodkinds" v-for="item in foodobj" :key="item.id" @click="toDetails(item.id)">
         <div style="overflow: hidden;">
-          <img :src="foodobj.image" alt="图片加载失败" />
+          <img :src="item.image" alt="图片加载失败" />
         </div>
-        <p class="foodtile">{{foodobj.title}}</p>
-        <p class="foodp">{{foodobj.userId}}</p>
+        <p class="foodtile">{{item.title}}</p>
+        <p class="foodp">{{item.userName}}</p>
+        <div class="foodtag" v-if="Boolean(Number(item.alone))">独家</div>
       </div>
     </div>
   </div>
@@ -23,14 +33,17 @@
 export default {
   data() {
     return {
-      foodMun:[]
+      foodItem: ["热菜", "凉菜", "汤羹", "主食", "小吃", "西餐", "菜谱首页"],
+      foodobj: [],
     };
   },
+
   // 请求数据库首页新秀菜谱的数据
   async mounted() {
-      let result = await this.$axios.get("/food");
-      this.foodMun = result.data;
+    let result = await this.$axios.get("/food");
+    this.foodobj = result.data;
   },
+
   methods: {
     toDetails(foodId) {
       alert(foodId);
@@ -43,6 +56,61 @@ export default {
 
 
 <style scoped>
+.food {
+  height: 40px;
+  /* background-color: burlywood; */
+  margin-top: 30px;
+  position: relative;
+  line-height: 40px;
+  border-bottom: 1px solid #cccccc;
+}
+
+.foodleft {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.h3 {
+  display: inline-block;
+  margin-right: 15px;
+  color: black;
+  /* font-family: "微软雅黑"; */
+  font: 20px "Hiragino Sans GB", STHeiti, 微软雅黑, "Microsoft YaHei", Helvetica,
+    Arial, serif;
+  padding-bottom: 9px;
+}
+
+.xinxiu {
+  color: #ff6767;
+  border-bottom: 3px solid #ff6767;
+}
+
+.h3:hover {
+  color: #ff6767;
+  border-bottom: 3px solid #ff6767;
+}
+
+.foodright {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.foodright a {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  line-height: 40px;
+  text-decoration: none;
+  font-size: 16px;
+  color: black;
+}
+
+.foodright a:hover {
+  color: #ff6767;
+}
+
 .foodbox {
   display: flex;
   justify-content: space-between;
@@ -58,6 +126,22 @@ export default {
   height: 305px;
   margin-bottom: 5px;
   cursor: pointer;
+}
+
+.foodtag {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 12px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  color: #fff;
+  height: 20px;
+  line-height: 20px;
+  padding: 1px 4px;
+  position: absolute;
+  z-index: 2;
 }
 
 /* 图片缓慢放大效果 */
@@ -103,6 +187,9 @@ export default {
 }
 
 .foodtile {
+  overflow: hidden; /*超出部分隐藏*/
+  text-overflow: ellipsis; /* 超出部分显示省略号 */
+  white-space: nowrap; /*规定段落中的文本不进行换行 */
   font-size: 18px;
 }
 

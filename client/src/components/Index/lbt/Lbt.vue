@@ -3,9 +3,10 @@
     <!-- element ui 轮播图 -->
     <div class="block">
       <el-carousel height="360px" indicator-position="none" arrow="never">
-        <el-carousel-item v-for="item in lbtImg" :key="item">
-          <!-- <h3 class="small">{{ item }}</h3> -->
-          <img :src="item" alt="图片加载失败" />
+        <el-carousel-item v-for="item in lbtImg" :key="item.id">
+          <a :href="item.url" target="_blank">
+            <img :src="item.images" alt="图片加载失败" />
+          </a>
         </el-carousel-item>
       </el-carousel>
     </div>
@@ -90,8 +91,8 @@ export default {
   components: {},
   async mounted() {
     // 请求后台获取轮播图
-    let result = await this.$axios.get("/lbt");
-    this.lbtImg = result.data;
+    let result_lbt = await this.$axios.get("/lbt");
+    this.lbtImg = result_lbt.data;
   },
 };
 </script>
@@ -101,20 +102,16 @@ export default {
   position: relative;
 }
 
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 14px;
-  opacity: 0.75;
-  line-height: 150px;
-  margin: 0;
-}
-
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
 }
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+
+.lbtHref {
+  display: block;
 }
 
 .menu {

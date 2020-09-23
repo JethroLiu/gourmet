@@ -120,6 +120,7 @@ export default {
   },
    async mounted() {
     let result = await this.$axios.get("/book");
+    console.log(result.data);
     this.arr = result.data;
   },
 };
@@ -185,5 +186,6 @@ ul .book-img {
 }
 .book-nav li:hover{
     color:  #ff6767;
+    cursor: pointer;
 }
 </style>

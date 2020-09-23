@@ -14,6 +14,13 @@
         <router-link to="##">{{ mynav[1] }}</router-link>
         <router-link to="##">{{ mynav[2] }}</router-link>
       </div>
+      <div class="serchBox">
+        <input type="text" />
+        <router-link to="##">搜索</router-link>
+      </div>
+    </div>
+    <div class="dongtai">
+         <router-link :to="el.link" v-for="el in title" :key=el.title>{{el.title}}</router-link>
     </div>
   </div>
 </template>
@@ -32,6 +39,7 @@ export default {
         { name: "赞与收藏", num: "9" },
       ],
       mynav: ["通知", "私信", "福利活动"],
+      title:[{title:'我关注的动态',link:'###'},{title:'所有动态',link:'###'},{title:'我的动态',link:'###'}]
     };
   },
 };
@@ -152,5 +160,59 @@ export default {
   color: #ffffff;
   line-height: 24px;
   background-color: #ff6767;
+}
+/* 搜索框 */
+.serchBox {
+  position: absolute;
+  right: 0;
+  top: 75px;
+  width: 250px;
+  height: 26px;
+  border: 1px solid #cccccc;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.serchBox input {
+  vertical-align: top;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  width: 170px;
+  height: 26px;
+  padding: 0 4px;
+}
+.serchBox a{
+    text-decoration: none;
+    display: inline-block;
+    width: 80px;
+    height: 26px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background-color: #999 ;
+    line-height: 28px;
+}
+.serchBox a:hover{
+    background-color: #ff6767;
+    color: #fff;
+}
+.dongtai {
+    display: inline-block;
+    width: 70%;
+    margin-left: 10px;
+    border-bottom: 1px solid rgb(238,238,238);
+}
+.dongtai a{
+    text-decoration: none;
+    font-weight: 400;
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 20px;
+    color: #656565;
+    padding-bottom: 5px;
+}
+.dongtai a:hover{
+    color:  #ff6767;
+    border-bottom: 2px solid #ff6767;
 }
 </style>

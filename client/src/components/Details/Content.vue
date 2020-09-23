@@ -11,6 +11,8 @@ import Aside from "@/components/Details/aside/Aside";
 export default {
   data() {
     return {};
+  },components: {
+    Section,
   },
 };
 </script>

@@ -1,15 +1,18 @@
 <template>
   <div class="w">
     <div class="foodbox">
-      <router-link to="##">
-        <div class="foodkinds" v-for="foodobj in foodMun" :key="foodobj.id">
-          <div style="overflow: hidden;">
-            <img :src="foodobj.image" alt />
-          </div>
-          <p class="foodtile">{{foodobj.title}}</p>
-          <p class="foodp">{{foodobj.userId}}</p>
+      <div
+        class="foodkinds"
+        v-for="foodobj in foodMun"
+        :key="foodobj.id"
+        @click="toDetails(foodobj.id)"
+      >
+        <div style="overflow: hidden;">
+          <img :src="foodobj.image" alt="图片加载失败" />
         </div>
-      </router-link>
+        <p class="foodtile">{{foodobj.title}}</p>
+        <p class="foodp">{{foodobj.userId}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -87,8 +90,13 @@ export default {
   // async mounted() {
   //     let result = await this.$axios.get("/food");
   //     this.foodMun = result.data;
-  //     console.log(result)
   // },
+  methods: {
+    toDetails(foodId) {
+      alert(foodId);
+      this.$router.push({ name: "Details", params: { foodId } });
+    },
+  },
 };
 </script>
 
@@ -96,25 +104,21 @@ export default {
 
 <style scoped>
 .foodbox {
-  /* background-color: rgb(213, 192, 233); */
-  margin-top: 12px;
-  flex-wrap: wrap;
-}
-
-.foodbox a {
   display: flex;
   justify-content: space-between;
+  background-color: rgb(213, 192, 233);
+  margin-top: 12px;
   flex-wrap: wrap;
   text-decoration: none;
   color: #000000;
 }
 
 .foodkinds {
+  position: relative;
   width: 230px;
   height: 305px;
-  /* overflow: hidden; */
   margin-bottom: 5px;
-  position: relative;
+  cursor: pointer;
 }
 
 /* 图片缓慢放大效果 */
@@ -132,7 +136,7 @@ export default {
   transform: scale(1.1, 1.1);
 }
 
-.foodkinds:hover .foodtile {
+.foodkinds .foodtile:hover {
   color: #ff6767;
 }
 
@@ -160,12 +164,12 @@ export default {
 }
 
 .foodtile {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .foodp {
   font-size: 12px;
-  color: #cccccc;
+  color: #7a7474;
 }
 
 .foodp:hover {

@@ -185,9 +185,5 @@ ul .book-img {
 }
 .book-nav li:hover{
     color:  #ff6767;
-<<<<<<< HEAD:client/src/components/Book/Book.vue
-    cursor: pointer;
-=======
->>>>>>> 8ed616c0d6cc5cbc59f51845a7358a1625f37b0d:client/src/components/Index/Book/Book.vue
 }
 </style>

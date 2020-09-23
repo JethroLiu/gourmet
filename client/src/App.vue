@@ -16,8 +16,8 @@
                 </div>
                 <!-- 右边导航 -->
                 <div class="rightnav">
-                    <router-link to="##">注册</router-link>
-                    <router-link to="##">登录</router-link>
+                    <router-link to="/MyUser/Register">注册</router-link>
+                    <router-link to="/MyUser/Login">登录</router-link>
                     <router-link to="##">QQ登录</router-link>
                     <router-link to="/Publish">发布</router-link>
                     <router-link to="##">签到有礼</router-link>

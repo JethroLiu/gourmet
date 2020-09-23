@@ -6,8 +6,13 @@
         <span class="title2">{{itemBox.title2}}</span>
         <span class="title3">{{itemBox.title3}}</span>
       </div>
-      <img :src="itemBox.image" alt="图片加载失败" width="310px" />
-      <router-link to="##" v-for="myitem in itemBox.content" :key="myitem">{{myitem}}</router-link>
+      <img :src="itemBox.images" alt="图片加载失败" width="310px" />
+      <a
+        :href="myitem.where"
+        v-for="myitem in itemBox.content"
+        :key="myitem.name"
+        target="_blank"
+      >{{myitem.name}}</a>
     </div>
   </div>
 </template>
@@ -16,21 +21,56 @@
 export default {
   data() {
     return {
-      adData: "",
+      adData: [
+        {
+          title1: "健康",
+          title2: "食疗",
+          title3: "健康首页",
+          images: "",
+          content: [],
+        },
+        {
+          title1: "烘焙",
+          title2: "食谱",
+          title3: "烘焙专区",
+          images: "",
+          content: [],
+        },
+        {
+          title1: "为您推荐",
+          title2: "",
+          title3: "我的收藏",
+          images: "",
+          content: [],
+        },
+      ],
     };
   },
   async mounted() {
+    // 请求推荐模块全部内容
     let result = await this.$axios.get("/advice");
-    this.adData = result.data;
-    this.adData[0].title1 = "健康";
-    this.adData[0].title2 = "食疗";
-    this.adData[0].title3 = "健康首页";
-    this.adData[1].title1 = "烘焙";
-    this.adData[1].title2 = "食谱";
-    this.adData[1].title3 = "烘焙专区";
-    this.adData[2].title1 = "为您推荐";
-    this.adData[2].title2 = "";
-    this.adData[2].title3 = "我的收藏";
+    // 提取三栏内容
+    for (let i = 0; i < result.data.length; i++) {
+      if (result.data[i].adviseId == 1) {
+        this.adData[0].images = result.data[i].image;
+        this.adData[0].content.push({
+          name: result.data[i].title,
+          where: result.data[i].titlelink,
+        });
+      } else if (result.data[i].adviseId == 2) {
+        this.adData[1].images = result.data[i].image;
+        this.adData[1].content.push({
+          name: result.data[i].title,
+          where: result.data[i].titlelink,
+        });
+      } else if (result.data[i].adviseId == 3) {
+        this.adData[2].images = result.data[i].image;
+        this.adData[2].content.push({
+          name: result.data[i].title,
+          where: result.data[i].titlelink,
+        });
+      }
+    }
   },
 };
 </script>

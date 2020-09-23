@@ -1,27 +1,26 @@
 <template>
   <div class="register">
-    <h1>注册</h1>
     <p>
-      用户邮箱:
+      <span class="title">用户邮箱:</span>
       <input type="text" v-model="email" />
     </p>
     <p>
-      用户密码:
+      <span class="title">用户密码:</span>
       <input type="text" v-model="password" />
     </p>
-    <p>
-      头像:
+    <div class="avatar">
+      <span class="title">头像:</span>
       <input type="file" @change="fileChange" />
-    </p>
-    <p>
+    </div>
+    <div class="yanzheng">
       验证码:
       <input type="text" v-model="userSvg" />
       <span @click="changeSvg" v-html="svg"></span>
-    </p>
-    <p>
+    </div>
+    <div class="makeSure">
       <button>登录</button>
       <button @click="send">立即注册</button>
-    </p>
+    </div>
   </div>
 </template>
 
@@ -80,4 +79,70 @@ export default {
 };
 </script>
 
-<style scoped></style>
+
+<style scoped>
+.register {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  font: 16px "Hiragino Sans GB", "STHeiti", "微软雅黑", "Microsoft YaHei",
+    Helvetica, Arial, serif;
+  color: #333;
+  padding-top: 10px;
+}
+p {
+  padding: 15px;
+}
+.avatar {
+  padding: 15px;
+}
+.avatar input {
+  background-color: #fff;
+}
+.makeSure {
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+  height: 70px;
+  margin-top: 20px;
+  padding: 15px;
+}
+.title{
+  display: inline-block;
+  width: 80px;
+  height: 21px;
+}
+.register input {
+  width: 200px;
+  height: 26px;
+  padding: 0 6px;
+  border: 1px solid #4d90fe;
+  outline: none;
+}
+.makeSure button {
+  display: inline-block;
+  height: 40px;
+  padding: 0 20px;
+  border: 1px solid #4d90fe;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 40px;
+  color: #4d90fe;
+  user-select: none;
+  background-color: #ffffff;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.makeSure button:hover {
+  transform: translate3d(0, -1px, 0);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.yanzheng {
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+}
+</style>

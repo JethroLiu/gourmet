@@ -34,6 +34,7 @@ class HomeController extends Controller {
     async topic() {
         const { ctx } = this;
         ctx.body = await this.ctx.service.home.topic();
+        // console.log(ctx.body);
     }
 }
 

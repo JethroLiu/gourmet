@@ -100,10 +100,10 @@ router.beforeEach((to, from, next) => {
     //     }
     // }
 
-    if (to.path == "/Publish") {
-        alert("全局前置守卫拦截了你的访问");
-        next("/MyUser/Login");
-    }
+    // if (to.path == "/Publish") {
+    //     alert("全局前置守卫拦截了你的访问");
+    //     next("/MyUser/Login");
+    // }
     next();
 });
 

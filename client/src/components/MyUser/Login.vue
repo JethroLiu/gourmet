@@ -1,12 +1,12 @@
 <template>
-  <div class="login w">
+  <div class="login ">
     <div class="loginBox">
       <div class="userEmail">
         <label for="email">用户邮箱</label>
         <input id="email" type="text" v-model="email" />
       </div>
       <div class="userPassword">
-        <label for="password">用户密码</label>
+        <label for="password">密码</label>
         <input id="password" type="text" v-model="password" />
       </div>
 
@@ -15,6 +15,7 @@
         <button @click="toRegister">注册账号</button>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -57,12 +58,22 @@ export default {
 };
 </script>
 <style scoped>
+.login{
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: 100%;
+  background-color: rgba(255,255,255,.8);
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
 .loginBox {
   box-sizing: border-box;
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 200px;
   padding: 10px;
-  border: 1px solid #4d90fe;
+  font: 16px "Hiragino Sans GB","STHeiti","微软雅黑","Microsoft YaHei",Helvetica,Arial,serif;
+  color:#333;
 }
 
 .userEmail,

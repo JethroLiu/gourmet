@@ -55,7 +55,7 @@ export default {
 
 .detailMe {
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 190px;
   padding: 20px 0;
 }

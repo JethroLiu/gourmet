@@ -11,7 +11,7 @@
         </div>
         <!-- 菜谱右边 -->
         <div class="foodright">
-            <router-link to="##" v-for="item in foodItem" :key="item">{{item}}</router-link>
+            <!-- <router-link to="##" v-for="item in foodItem1" :key="item">{{item}}</router-link> -->
         </div>
     </div>
 </template>
@@ -22,7 +22,7 @@
     export default {
         data() {
             return {
-                foodItem: ["热菜", "凉菜", "汤羹", "主食", "小吃", "西餐", "菜谱首页"]
+                foodItem: ["热菜", "凉菜", "汤羹", "主食", "小吃", "西餐", "菜谱首页"],
             };
         },
         // 首页新秀食谱的标题接口

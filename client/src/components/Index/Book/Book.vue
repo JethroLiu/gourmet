@@ -14,7 +14,7 @@
     </div>
     <div class="book">
       <ul>
-        <li v-for="el in arr1" class="single-book" :key="el.id">
+        <li v-for="el in arr" class="single-book" :key="el.id">
           <a href="###">
             <img :src="el.image" class="book-img" alt="图片显示失败" />
             <p>{{el.name}}</p>
@@ -30,92 +30,6 @@ export default {
   data() {
     return {
       arr:[],
-      arr1: [
-        {
-          id: 1,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 2,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 3,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 4,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 5,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 6,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 7,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 8,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 9,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 10,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 11,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 12,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 13,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-        {
-          id: 14,
-          image: "https://static.meishichina.com/img/shicai/xigua.jpg",
-          name: "西瓜",
-          content: "吃瓜群众的最爱",
-        },
-      ],
     };
   },
    async mounted() {

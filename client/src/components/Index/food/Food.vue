@@ -23,74 +23,14 @@
 export default {
   data() {
     return {
-      foodMun: [
-        {
-          id: 1,
-          image:
-            "https://i3.meishichina.com/attachment/recipe/2020/09/22/2020092216007465652048197577.jpg?x-oss-process=style/c320",
-          title: "猪仔包",
-          userId: "rosejyy2000",
-          alone: "独家",
-        },
-        {
-          id: 2,
-          image:
-            "https://i3.meishichina.com/attachment/recipe/2020/09/22/2020092216007445885588197577.jpg?x-oss-process=style/c320",
-          title: "猪仔包",
-          userId: "rosejyy2000",
-        },
-        {
-          id: 3,
-          image:
-            "https://i3.meishichina.com/attachment/recipe/2020/09/22/2020092216007445885588197577.jpg?x-oss-process=style/c320",
-          title: "猪仔包",
-          userId: "rosejyy2000",
-          alone: "独家",
-        },
-        {
-          id: 4,
-          image:
-            "https://i3.meishichina.com/attachment/recipe/2020/09/22/2020092216007445885588197577.jpg?x-oss-process=style/c320",
-          title: "猪仔包",
-          userId: "rosejyy2000",
-          alone: "独家",
-        },
-        {
-          id: 5,
-          image:
-            "https://i3.meishichina.com/attachment/recipe/2020/09/22/2020092216007445885588197577.jpg?x-oss-process=style/c320",
-          title: "猪仔包",
-          userId: "rosejyy2000",
-        },
-        {
-          id: 6,
-          image:
-            "https://i3.meishichina.com/attachment/recipe/2020/09/22/2020092216007445885588197577.jpg?x-oss-process=style/c320",
-          title: "猪仔包",
-          userId: "rosejyy2000",
-        },
-        {
-          id: 7,
-          image:
-            "https://i3.meishichina.com/attachment/recipe/2020/09/22/2020092216007445885588197577.jpg?x-oss-process=style/c320",
-          title: "猪仔包",
-          userId: "rosejyy2000",
-        },
-        {
-          id: 8,
-          image:
-            "https://i3.meishichina.com/attachment/recipe/2020/09/22/2020092216007445885588197577.jpg?x-oss-process=style/c320",
-          title: "猪仔包",
-          userId: "rosejyy2000",
-        },
-      ],
+      foodMun:[]
     };
   },
   // 请求数据库首页新秀菜谱的数据
-  // async mounted() {
-  //     let result = await this.$axios.get("/food");
-  //     this.foodMun = result.data;
-  // },
+  async mounted() {
+      let result = await this.$axios.get("/food");
+      this.foodMun = result.data;
+  },
   methods: {
     toDetails(foodId) {
       alert(foodId);
@@ -106,7 +46,6 @@ export default {
 .foodbox {
   display: flex;
   justify-content: space-between;
-  background-color: rgb(213, 192, 233);
   margin-top: 12px;
   flex-wrap: wrap;
   text-decoration: none;

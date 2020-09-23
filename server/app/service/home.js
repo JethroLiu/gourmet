@@ -49,7 +49,36 @@ class HomeService extends Service {
         var data = await this.app.mysql.query(
             "select t.*,m.userPic,m.userName from topic t,myuser m where m.id=t.userId"
         );
-        return data;
+        var arr = [];
+        for(var i=0;i<data.length;i++){
+            var obj={};
+            obj.avatar=data[i]["userPic"];
+            obj.name=data[i]["userName"]
+            obj.time=data[i]["proDate"]
+            if(data[i]["title"]){
+                obj.title=data[i]["title"]
+            }
+            obj.content=data[i]["article"]
+            obj.like=data[i]["like"]
+            obj.comment=data[i]["comment"]
+            obj.img=[];
+            obj.img.push(data[i]["image1"])
+            obj.img.push(data[i]["image2"])
+            if(data[i]["image3"]){
+                obj.img.push(data[i]["image3"])
+            }
+            if(data[i]["image4"]){
+                obj.img.push(data[i]["image4"])
+            }
+            if(data[i]["image5"]){
+                obj.img.push(data[i]["image5"])
+            }
+            if(data[i]["image6"]){
+                obj.img.push(data[i]["image6"])
+            }
+            arr.push(obj)
+        }
+        return arr;
     }
 }
 

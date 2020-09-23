@@ -39,9 +39,9 @@ class HomeService extends Service {
 
     //book  时令食材
     async book() {
-        // var data = await this.app.mysql.query(" select * from book")
-        // return data;
-        return "book2  具体菜品展示2 ";
+        var data = await this.app.mysql.query(" select * from book")
+        return data;
+        // return "book2  具体菜品展示2 ";
     }
 
     //话题

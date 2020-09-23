@@ -87,6 +87,7 @@ export default {
   // async mounted() {
   //     let result = await this.$axios.get("/food");
   //     this.foodMun = result.data;
+  //     console.log(result)
   // },
 };
 </script>
@@ -95,7 +96,7 @@ export default {
 
 <style scoped>
 .foodbox {
-  background-color: rgb(213, 192, 233);
+  /* background-color: rgb(213, 192, 233); */
   margin-top: 12px;
   flex-wrap: wrap;
 }
@@ -159,12 +160,12 @@ export default {
 }
 
 .foodtile {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .foodp {
   font-size: 12px;
-  color: #7a7474;
+  color: #cccccc;
 }
 
 .foodp:hover {

@@ -26,11 +26,24 @@
 export default {
     components: {
     },
-    //     async mounted() {
-//         // 请求后台获取
-//         let result = await this.$axios.get("/topic");
-//         this.lbtImg = result.data;
-//   },
+        async mounted() {
+        // 请求后台获取
+        let result = await this.$axios.get("/topic");
+        console.log(result);
+        // this.lbtImg = result.data;
+        for( var index in result){
+            this.topiccontent[index].name=result[index].userName;
+            this.topiccontent[index].avater=result[index].userPic;
+            this.topiccontent[index].title=result[index].title;
+            this.topiccontent[index].content=result[index].article;
+            this.topiccontent[index].like=3;
+            this.topiccontent[index].comment=5;
+            for(var i=1;i<=6;i++){
+                 this.topiccontent[index].img[i]=`result[index].image${i}`
+            }
+        }
+       
+  },
     data() {
     return {
             topictitle:["热门话题","精华日志"],

@@ -11,4 +11,7 @@ module.exports = (app) => {
     router.get("/book", controller.home.book); //book  时令食材
     router.get("/topic", controller.home.topic); //话题
     router.get("/verification", controller.user.verification); //话题
+    router.get("/details",controller.details.details);//详情页
+    router.post("/register", controller.user.register);  // 注册
+    router.post("/login", controller.user.login);  // 登录
 };

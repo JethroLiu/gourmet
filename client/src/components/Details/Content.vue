@@ -1,28 +1,26 @@
 <template>
-  <div id="content" class="w">
-    <Section></Section>
-    <Aside></Aside>
-  </div>
+    <div id="content" class="w">
+        <Section></Section>
+        <Aside></Aside>
+    </div>
 </template>
 
 <script>
-  import Section from "@/components/Details/section/Section";
-  import Aside from "@/components/Details/aside/Aside";
-  export default {
+import Section from "@/components/Details/section/Section";
+import Aside from "@/components/Details/aside/Aside";
+export default {
     data() {
-      return {
-
-      };
+        return {};
     },
     components: {
-      Section,
-      Aside,
+        Section,
+        Aside,
     },
-  };
+};
 </script>
 
 <style scoped>
-  #content {
+#content {
     position: relative;
-  }
+}
 </style>

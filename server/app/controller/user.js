@@ -11,8 +11,8 @@ class UserController extends Controller {
     }
     async register() {
         const { ctx } = this;
-        console.log(ctx.request.query, ctx.request.files, ctx.request.body);
-
+        // console.log(ctx.request.query, ctx.request.files, ctx.request.body);
+        //处理从客户端发送过来的数据（用户在浏览器输入的数据）
         if (ctx.request.files) {
             let filename = path.basename(this.ctx.request.files[0].filepath);
             let oldPath = `${this.ctx.request.files[0].filepath}`;
@@ -23,12 +23,12 @@ class UserController extends Controller {
                 if (err) {
                     console.log(err);
                 }
-                console.log("文件移动成功！");
+                // console.log("文件移动成功！");
             });
-            let imageUrl = `http://192.168.3.114:7001/public/upload/${filename}`;
-            ctx.request.body.img = imageUrl;
-            // 把注册结果传给 service 中的工具
-            ctx.body = await ctx.service.user.register(ctx.request.body);
+            let imageUrl = `http://localhost:7001/public/upload/${filename}`;
+            this.ctx.request.body.userPic = imageUrl;
+            // 把注册结果传给 service 中的工具 
+            this.ctx.body = await this.ctx.service.user.register(ctx.request.body);
         }
     }
 
@@ -53,7 +53,7 @@ class UserController extends Controller {
 
     async session1() {
         const { ctx } = this;
-        console.log(this.ctx.session.email);
+        // console.log(this.ctx.session.email);
         let result = this.ctx.service.user.session1();
         ctx.body = result;
     }

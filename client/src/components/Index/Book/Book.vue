@@ -97,7 +97,7 @@ ul .book-img {
   list-style: none;
   padding-left: 20px;
 }
-.book-nav li:hover{
-    color:  #ff6767;
+.book-nav li:hover {
+  color: #ff6767;
 }
 </style>

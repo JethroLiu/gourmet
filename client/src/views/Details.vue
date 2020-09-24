@@ -20,9 +20,12 @@ export default {
     Footer,
     Content,
   },
-  mounted() {
+  async mounted() {
     // 根据菜谱的 id 请求菜谱的详细信息
     let foodId = this.$route.params.foodId;
+    console.log(111,foodId);
+    let res = await this.$axios.get("/details", { params: foodId });
+    console.log(res);
     // let foodObj = await this.$axios.get("/Detailes");
   },
 };

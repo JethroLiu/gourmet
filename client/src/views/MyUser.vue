@@ -4,32 +4,32 @@
         <div class="block">
             <el-carousel :height="`${screenHeight}px`" indicator-position="none" arrow="never">
                 <el-carousel-item>
-                    <img src="../assets/bg1.jpeg" alt="图片加载失败" width="100%" height="100%" />
+                    <img src="../assets/1.jpg" alt="图片加载失败" width="100%" height="100%" />
                 </el-carousel-item>
                 <el-carousel-item>
-                    <img src="../assets/bg2.png" alt="图片加载失败" width="100%" height="100%" />
+                    <img src="../assets/2.jpg" alt="图片加载失败" width="100%" height="100%" />
                 </el-carousel-item>
                 <el-carousel-item>
-                    <img src="../assets/bg3.png" alt="图片加载失败" width="100%" height="100%" />
+                    <img src="../assets/3.jpg" alt="图片加载失败" width="100%" height="100%" />
                 </el-carousel-item>
                 <el-carousel-item>
-                    <img src="../assets/bg4.jpg" alt="图片加载失败" width="100%" height="100%" />
+                    <img src="../assets/4.jpg" alt="图片加载失败" width="100%" height="100%" />
                 </el-carousel-item>
                 <el-carousel-item>
-                    <img src="../assets/bg5.jpg" alt="图片加载失败" width="100%" height="100%" />
+                    <img src="../assets/5.jpg" alt="图片加载失败" width="100%" height="100%" />
+                </el-carousel-item>
+                <el-carousel-item>
+                    <img src="../assets/6.jpg" alt="图片加载失败" width="100%" height="100%" />
+                </el-carousel-item>
+                <el-carousel-item>
+                    <img src="../assets/7.jpg" alt="图片加载失败" width="100%" height="100%" />
                 </el-carousel-item>
             </el-carousel>
         </div>
 
         <div class="box">
-            <router-link
-                :to="el.link"
-                :class="{ show: change != index }"
-                v-for="(el, index) in datas"
-                :key="index"
-                @click.native="mychange(index)"
-                >{{ el.title }}</router-link
-            >
+            <router-link :class="showClass" to="/MyUser/Login" @click.native="choosePlay(1)">登录</router-link>
+            <router-link :class="otherClass" to="/MyUser/Register" @click.native="choosePlay(2)">注册</router-link>
             <router-view></router-view>
         </div>
     </div>
@@ -37,20 +37,12 @@
 
 <script>
 export default {
-    methods: {
-        mychange(e) {
-            this.change = e;
-        },
-    },
     data() {
         return {
             screenWidth: document.body.clientWidth, // 屏幕尺寸
             screenHeight: document.documentElement.clientHeight || document.body.clientHeight, // 屏幕尺寸
-            change: 0,
-            datas: [
-                { title: "登录", link: "/MyUser/Login" },
-                { title: "注册", link: "/MyUser/Register" },
-            ],
+            showClass: "mybox selected",
+            otherClass: "mybox",
         };
     },
     mounted() {
@@ -59,6 +51,27 @@ export default {
             that.screenWidth = document.body.clientWidth;
             that.screenHeight = document.documentElement.clientHeight || document.body.clientHeight;
         };
+        if (this.$route.fullPath == "/MyUser/Login") {
+            this.showClass = "mybox selected";
+            this.otherClass = "mybox";
+        } else if (this.$route.fullPath == "/MyUser/Register") {
+            this.otherClass = "mybox selected";
+            this.showClass = "mybox";
+        }
+    },
+    methods: {
+        choosePlay(arg) {
+            console.log("你点击了");
+            if (arg == 1) {
+                this.showClass = "mybox selected";
+                this.otherClass = "mybox";
+                console.log("你点击了登录");
+            } else if (arg == 2) {
+                this.otherClass = "mybox selected";
+                this.showClass = "mybox";
+                console.log("你点击了注册");
+            }
+        },
     },
 };
 </script>
@@ -94,24 +107,17 @@ export default {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-/*登录注册两个盒子*/
-.box a {
+
+/* 登录注册两个盒子 */
+.mybox {
     display: inline-block;
     color: #000;
     text-decoration: none;
     width: 50%;
     z-index: 1;
 }
-/*登录*/
-.box a:nth-of-type(1) {
-    border-top-left-radius: 5px;
-}
-/*注册*/
-.box a:nth-of-type(2) {
-    border-top-right-radius: 5px;
-}
-.show {
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff !important;
+
+.selected {
+    background-color: #4d90fe;
 }
 </style>

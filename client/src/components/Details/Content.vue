@@ -1,5 +1,6 @@
 <template>
   <div id="content" class="w">
+    <h2>详情页</h2>
     <Section></Section>
     <Aside></Aside>
   </div>
@@ -11,11 +12,12 @@ import Aside from "@/components/Details/aside/Aside";
 export default {
   data() {
     return {
-      components: {
+      
+      }
+    },
+    components: {
         Section,
         Aside,
-      },
-    };
   },
 };
 </script>

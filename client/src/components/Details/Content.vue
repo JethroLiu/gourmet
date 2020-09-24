@@ -6,22 +6,23 @@
 </template>
 
 <script>
-import Section from "@/components/Details/section/Section";
-import Aside from "@/components/Details/aside/Aside";
-export default {
-  data() {
-    return {
-      components: {
-        Section,
-        Aside,
-      },
-    };
-  },
-};
+  import Section from "@/components/Details/section/Section";
+  import Aside from "@/components/Details/aside/Aside";
+  export default {
+    data() {
+      return {
+
+      };
+    },
+    components: {
+      Section,
+      Aside,
+    },
+  };
 </script>
 
-<style  scoped>
-#content {
-  position: relative;
-}
+<style scoped>
+  #content {
+    position: relative;
+  }
 </style>

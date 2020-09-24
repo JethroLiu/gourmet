@@ -17,24 +17,25 @@ class UserService extends Service {
         });
         // 为每一个请求的ip地址开辟一篇空间，用来存储只属于这个用户的数据
         // session 的属性名是自定义的，用来保存某个数据
-        this.ctx.session.verif = data.text;
+        this.ctx.session.verif = data.text;//缓存验证码
         return data;
     }
 
     async register(userinfo) {
+        // 判断从前端传过来的数据 先验证码再其它
         const { ctx } = this;
-        console.log(userinfo);
-        console.log(this.ctx.session.verif);
+        console.log(userinfo);//打印前端传过来的数据信息 包括用户输入的验证码、邮箱等所有数据
+        // console.log(this.ctx.session.verif);//打印显示在服务器上的验证码
         // 验证数据中的数据
-        if (userinfo.verification.toUpperCase() !== this.ctx.session.verification.toUpperCase()) {
+        if (userinfo.svg.toUpperCase() !== this.ctx.session.verif.toUpperCase()) {//不区分大小写
             return { code: "4001", info: "验证码错误" };
         } else {
             let selectsql = `select *from myuser where email ="${userinfo.email}"`;
             let result = await this.app.mysql.query(selectsql);
-            if (result[0]) {
+            if (result[0]) {//数组取ling 数据库中已有该数据
                 return { code: "4002", info: "邮箱已经注册过了" };
             } else {
-                let insertsql = `insert into myuser (email, password, img) values ("${userinfo.email}","${userinfo.password}","${userinfo.myfile}")`;
+                let insertsql = `insert into myuser (email, userPwd, userPic) values ("${userinfo.email}","${userinfo.userPwd}","${userinfo.userPic}")`;
                 let result = await this.app.mysql.query(insertsql);
                 if (result.affectedRows > 0) {
                     return { code: "2001", info: "注册成功" };
@@ -47,7 +48,7 @@ class UserService extends Service {
 
     async login(logininfo) {
         const { ctx } = this;
-        let sql = `select *from myuser where email="${logininfo.email}" and password="${logininfo.password}"`;
+        let sql = `select *from myuser where email="${logininfo.email}" and userPwd="${logininfo.userPwd}"`;
         let result = await this.app.mysql.query(sql);
         return result;
     }

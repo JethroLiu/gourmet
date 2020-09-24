@@ -1,19 +1,23 @@
 <template>
   <div class="login ">
     <div class="loginBox">
+       <span v-if="tishi" class="tishi">**账号或者密码错误</span>
       <div class="userEmail">
         <label for="email">用户邮箱</label>
         <input id="email" type="text" v-model="email" />
+        
       </div>
       <div class="userPassword">
         <label for="password">密码</label>
-        <input id="password" type="text" v-model="password" />
+        <input id="password" type="text" v-model="userPwd" />
       </div>
 
+      
       <div class="makeSure">
         <button @click="login">立即登录</button>
         <button @click="toRegister">注册账号</button>
       </div>
+     
     </div>
     
   </div>
@@ -25,12 +29,14 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
+      userPwd: "",
+      tishi:false
     };
   },
   mounted() {
-    this.email = this.$route.params.email;
-    this.password = this.$route.params.password;
+    // console.log(this.$route)
+    // this.email = this.$route.query.email;
+    // this.userPwd = this.$route.query.userPwd;
   },
   methods: {
     toRegister() {
@@ -39,7 +45,7 @@ export default {
     async login() {
       let loginRes = await this.$axios.post("/login", {
         email: this.email,
-        password: this.password,
+        userPwd: this.userPwd,
       });
       if (loginRes.data.code == 2002) {
         // 登陆成功,先缓存，再跳转
@@ -52,6 +58,7 @@ export default {
         this.$router.push("/");
       } else if (loginRes.data.code == 4005) {
         // 账号或密码错误
+        this.tishi=true
       }
     },
   },
@@ -133,5 +140,9 @@ export default {
 .makeSure button:hover {
   transform: translate3d(0, -1px, 0);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.tishi{
+  color: red;
+  font-size: 12px;
 }
 </style>

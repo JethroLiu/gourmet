@@ -2,21 +2,23 @@
   <div class="register">
     <p>
       <span class="title">用户邮箱:</span>
-      <input type="text" v-model="email" />
+      <input type="text" v-model="email" /><br>
+      <span class="prompt1" v-if="prompt1">*该邮箱已被注册</span>
     </p>
     <p>
       <span class="title">用户密码:</span>
-      <input type="text" v-model="password" />
+      <input type="text" v-model="userPwd" />
     </p>
     <div class="avatar">
       <span class="title">头像:</span>
-      <input type="file" @change="fileChange" />
+      <input type="file" @change="fileChange($event)" />
     </div>
     <div class="yanzheng">
       验证码:
       <input type="text" v-model="userSvg" />
       <span @click="changeSvg" v-html="svg"></span>
     </div>
+      <div class="mysvg" v-if="mysvg">*验证码错误</div>
     <div class="makeSure">
       <button>登录</button>
       <button @click="send">立即注册</button>
@@ -30,10 +32,12 @@ export default {
   data() {
     return {
       email: "",
-      password: "",
+      userPwd: "",
       svg: "",
       userSvg: "",
-      myfile: "",
+      userPic: "",
+      prompt1:"",
+      mysvg:""
     };
   },
   mounted() {
@@ -46,33 +50,34 @@ export default {
     async send() {
       // 交互结果
       let fileReader = new FormData();
-      fileReader.append("userPic", this.myfile);
+      fileReader.append("userPic", this.userPic);
       fileReader.append("email", this.email);
-      fileReader.append("password", this.password);
+      fileReader.append("userPwd", this.userPwd);
       fileReader.append("svg", this.userSvg);
       // 发送注册的请求，并得到返回结果
-      let myres = await this.$axios.post("/register", fileReader, {
-        header: { "Content-Type": "pplication/x-www-form-urlencoded" },
-      });
+      let myres = await this.$axios.post("/register", fileReader, {header: { "Content-Type": "pplication/x-www-form-urlencoded" }})
+      // .then((res) => {res.data里面有404 以及注册等数据 })
       // 根据错误码执行相对应的逻辑
+      console.log(myres)
       if (myres.data.code == 4001) {
-        console.log("验证码错误");
+        this.mysvg=true
       } else if (myres.data.code == 4002) {
-        console.log("邮箱已经注册过了");
+         this.prompt1=true
       } else if (myres.data.code == 2001) {
-        this.$router.push({
-          path: "/Login",
-          params: { email: this.email, password: this.password },
-        });
+        this.$router.push('/MyUser/Login?userPwd=${this.userPwd}&email=${this.email}')
+        // this.$router.push({
+        //   path: "/",
+        //   params: { email: this.email, userPwd: this.userPwd },
+        // });
       }
     },
     changeSvg() {
-      this.$axios.get("/verification").then((res) => {
+      this.$axios.get("/verification",{params:{id:666}}).then((res) => {
         this.svg = res.data.data;
       });
     },
     fileChange(event) {
-      this.myfile = event.target.files[0];
+      this.userPic = event.target.files[0];
     },
   },
   components: {},
@@ -141,8 +146,17 @@ p {
 }
 .yanzheng {
   display: flex;
-  padding: 15px;
+  padding: 15px 15px 0 15px;
   align-items: center;
   justify-content: center;
+}
+.mysvg,.prompt1{
+  font-size: 12px;
+  color: red;
+}
+.mysvg{
+  position: relative;
+  bottom: 0;
+  left: -100px;
 }
 </style>

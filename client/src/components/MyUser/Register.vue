@@ -1,9 +1,10 @@
 <template>
     <div class="register">
         <p>
-            <span class="title">用户邮箱:</span>
+            <span class="title">用户邮箱</span>
             <input type="text" v-model="email" /><br />
-            <span class="prompt1" v-if="prompt1">*该邮箱已被注册</span>
+            <!-- <span class="prompt1" v-if="prompt1">该邮箱已被注册</span> -->
+            <span class="prompt1">该邮箱已被注册</span>
         </p>
         <p>
             <span class="title">用户密码:</span>
@@ -18,7 +19,7 @@
             <input type="text" v-model="userSvg" />
             <span @click="changeSvg" v-html="svg"></span>
         </div>
-        <div class="mysvg" v-if="mysvg">*验证码错误</div>
+        <div class="mysvg" v-if="mysvg">验证码错误</div>
         <div class="makeSure">
             <button>登录</button>
             <button @click="send">立即注册</button>

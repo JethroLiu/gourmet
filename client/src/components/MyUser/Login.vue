@@ -1,14 +1,17 @@
 <template>
     <div class="login ">
         <div class="loginBox">
-            <span v-if="tishi" class="tishi">**账号或者密码错误</span>
             <div class="userEmail">
                 <label for="email">用户邮箱</label>
-                <input id="email" type="text" v-model="email" />
+                <input id="email" type="text" v-model="email" placeholder="请输入您的邮箱" />
             </div>
+
             <div class="userPassword">
-                <label for="password">密码</label>
-                <input id="password" type="text" v-model="userPwd" />
+                <label for="password">用户密码</label>
+                <input id="password" type="text" v-model="userPwd" placeholder="请输入您的密码" />
+            </div>
+            <div class="loginErr">
+                <span v-if="tishi">账号或密码错误</span>
             </div>
 
             <div class="makeSure">
@@ -73,7 +76,7 @@ export default {
 .loginBox {
     box-sizing: border-box;
     width: 100%;
-    height: 200px;
+    height: 240px;
     padding: 10px;
     font: 16px "Hiragino Sans GB", "STHeiti", "微软雅黑", "Microsoft YaHei", Helvetica, Arial, serif;
     color: #333;
@@ -85,12 +88,25 @@ export default {
     margin-top: 10px;
 }
 
+.loginErr {
+    height: 30px;
+}
+
+.loginErr span {
+    height: 30px;
+    line-height: 30px;
+    user-select: none;
+    font-size: 14px;
+    display: inline-block;
+    color: red;
+}
+
 .makeSure {
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
     height: 40px;
-    margin-top: 20px;
+    margin-top: 4px;
     padding: 0 40px 0;
 }
 
@@ -121,7 +137,7 @@ export default {
     display: inline-block;
     height: 40px;
     padding: 0 20px;
-    border: 1px solid #4d90fe;
+    border: 1px solid#4d90fe;
     border-radius: 6px;
     font-size: 16px;
     line-height: 40px;
@@ -136,9 +152,5 @@ export default {
 .makeSure button:hover {
     transform: translate3d(0, -1px, 0);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-}
-.tishi {
-    color: red;
-    font-size: 12px;
 }
 </style>

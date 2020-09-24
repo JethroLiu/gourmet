@@ -1,6 +1,6 @@
 <template>
     <div id="myUser">
-        <!-- element ui 轮播图 -->
+        <!-- 背景轮播图 -->
         <div class="block">
             <el-carousel :height="`${screenHeight}px`" indicator-position="none" arrow="never">
                 <el-carousel-item>
@@ -61,15 +61,12 @@ export default {
     },
     methods: {
         choosePlay(arg) {
-            console.log("你点击了");
             if (arg == 1) {
                 this.showClass = "mybox selected";
                 this.otherClass = "mybox";
-                console.log("你点击了登录");
             } else if (arg == 2) {
                 this.otherClass = "mybox selected";
                 this.showClass = "mybox";
-                console.log("你点击了注册");
             }
         },
     },
@@ -101,7 +98,7 @@ export default {
     line-height: 50px;
     text-align: center;
     font-size: 20px;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
     margin: 0px auto;
     position: relative;
     border-top-left-radius: 5px;
@@ -111,13 +108,16 @@ export default {
 /* 登录注册两个盒子 */
 .mybox {
     display: inline-block;
-    color: #000;
+    color: #000000;
     text-decoration: none;
     width: 50%;
     z-index: 1;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .selected {
     background-color: #4d90fe;
+    color: #ffffff;
 }
 </style>

@@ -6,7 +6,22 @@ import axios from "axios";
 import ElementUI from "element-ui"; // 引入组件库
 import "element-ui/lib/theme-chalk/index.css"; // 全局的css样式
 
+import Vuex from "vuex";
+
 Vue.use(ElementUI);
+Vue.use(Vuex);
+
+// 创建 vue 仓库
+const store = new Vuex.Store({
+    state: { myFoodId: "我是菜谱的id" },
+    mutations: {
+        //默认传第一个参数传state
+        increment(state, obj) {
+            // 变更状态
+            state.myFoodId = obj.n;
+        },
+    },
+});
 
 // 配置全局的 axios 基础网址
 axios.defaults.baseURL = "http://localhost:7001";
@@ -18,6 +33,7 @@ Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
 new Vue({
-    router,
     render: (h) => h(App),
+    router,
+    store, // 挂载仓库
 }).$mount("#app");

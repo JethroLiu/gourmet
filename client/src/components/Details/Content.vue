@@ -1,5 +1,6 @@
 <template>
   <div id="content" class="w">
+    <h2>详情页</h2>
     <Section></Section>
     <Aside></Aside>
   </div>

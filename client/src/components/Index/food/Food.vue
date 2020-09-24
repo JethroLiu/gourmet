@@ -15,12 +15,17 @@
       </div>
     </div>
     <div class="foodbox">
-      <div class="foodkinds" v-for="item in foodobj" :key="item.id" @click="toDetails(item.id)">
-        <div style="overflow: hidden;">
+      <div
+        class="foodkinds"
+        v-for="item in foodobj"
+        :key="item.id"
+        @click="toDetails(item.id)"
+      >
+        <div style="overflow: hidden">
           <img :src="item.image" alt="图片加载失败" />
         </div>
-        <p class="foodtile">{{item.title}}</p>
-        <p class="foodp">{{item.userName}}</p>
+        <p class="foodtile">{{ item.title }}</p>
+        <p class="foodp">{{ item.userName }}</p>
         <div class="foodtag" v-if="Boolean(Number(item.alone))">独家</div>
       </div>
     </div>
@@ -58,7 +63,6 @@ export default {
 <style scoped>
 .food {
   height: 40px;
-  /* background-color: burlywood; */
   margin-top: 30px;
   position: relative;
   line-height: 40px;

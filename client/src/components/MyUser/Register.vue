@@ -4,7 +4,6 @@
             <span class="title">用户邮箱</span>
             <input type="text" v-model="email" /><br />
             <!-- <span class="prompt1" v-if="prompt1">该邮箱已被注册</span> -->
-            <span class="prompt1">该邮箱已被注册</span>
         </p>
         <p>
             <span class="title">用户密码:</span>

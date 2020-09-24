@@ -1,25 +1,33 @@
 <template>
     <div class="register">
-        <p>
-            <span class="title">用户邮箱</span>
-            <input type="text" v-model="email" /><br />
-            <!-- <span class="prompt1" v-if="prompt1">该邮箱已被注册</span> -->
-            <span class="prompt1">该邮箱已被注册</span>
-        </p>
-        <p>
-            <span class="title">用户密码:</span>
-            <input type="text" v-model="userPwd" />
-        </p>
-        <div class="avatar">
-            <span class="title">头像:</span>
-            <input type="file" @change="fileChange($event)" />
+      <!-- 用户邮箱 -->
+        <div>
+            <label for="email">用户邮箱:</label>
+            <input type="text" v-model="email" id="email" placeholder="请输入密码"/>
         </div>
+        <div class="emailErr" >
+          <span v-if="prompt1">*该邮箱已被注册</span>
+        </div>
+        <!-- 用户密码 -->
+        <div>
+            <label for="userPwd">用户密码:</label>
+            <input type="text" v-model="userPwd"  id="userPwd" placeholder="请输入密码"/>
+        </div>
+        <!-- 用户头像 -->
+        <div class="avatar">
+            <label class="userActive" >头　像:</label>
+            <input type="file" @change="fileChange($event)" class="avaterActive"/>
+        </div>
+
+        <!-- 验证码 -->
         <div class="yanzheng">
-            验证码:
-            <input type="text" v-model="userSvg" />
+            <label >验证码:</label>
+            <input type="text" v-model="userSvg"  class="input"/>
             <span @click="changeSvg" v-html="svg"></span>
         </div>
-        <div class="mysvg" v-if="mysvg">验证码错误</div>
+        <div class="svgErr"> 
+          <span v-if="mysvg">验证码错误</span>
+        </div>
         <div class="makeSure">
             <button>登录</button>
             <button @click="send">立即注册</button>
@@ -96,28 +104,6 @@ export default {
     top: 1px;
     padding-top: 10px;
 }
-p {
-    padding: 15px;
-}
-.avatar {
-    padding: 15px;
-}
-.avatar input {
-    background-color: #fff;
-}
-.makeSure {
-    display: flex;
-    justify-content: space-around;
-    box-sizing: border-box;
-    height: 70px;
-    margin-top: 20px;
-    padding: 15px;
-}
-.title {
-    display: inline-block;
-    width: 80px;
-    height: 21px;
-}
 .register input {
     width: 200px;
     height: 26px;
@@ -125,6 +111,37 @@ p {
     border: 1px solid #4d90fe;
     outline: none;
 }
+p {
+    padding: 15px;
+}
+.avatar {
+    padding: 15px;
+}
+.avatar input {
+    border: transparent;
+}
+.fileImg{
+  width: 60px;
+  height: 50px;
+  border: 1px  solid red;
+  position: relative;
+  left: 220px;
+  top: -10px;
+}
+.makeSure {
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    height: 70px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.title {
+    display: inline-block;
+    width: 80px;
+    height: 21px;
+}
+
 .makeSure button {
     display: inline-block;
     height: 40px;
@@ -147,18 +164,39 @@ p {
 }
 .yanzheng {
     display: flex;
-    padding: 15px 15px 0 15px;
+    padding: 5px 15px 0 15px;
     align-items: center;
     justify-content: center;
 }
-.mysvg,
-.prompt1 {
-    font-size: 12px;
-    color: red;
+.yanzheng input{
+  width: 100px;
 }
+.yanzheng span{
+  display: block;
+}
+
 .mysvg {
     position: relative;
     bottom: 0;
     left: -100px;
 }
+ .svgErr,.emailErr{
+  height: 30px;
+}
+ .svgErr span,  .emailErr span{
+  font-size: 12px;
+    color: red;
+}
+label{
+  display: inline-block;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 40px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+/* .userActive{
+  letter-spacing: 2px;
+} */
 </style>

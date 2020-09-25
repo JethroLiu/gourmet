@@ -21,6 +21,7 @@ const routes = [
         path: "/MyUser",
         name: "MyUser",
         component: () => import("../views/MyUser.vue"),
+        redirect: "/MyUser/Login",
         children: [
             {
                 path: "Login",

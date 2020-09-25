@@ -29,7 +29,7 @@
         </div>
         <!-- 标题 -->
         <router-link to="###" class="user-content">
-          <span>{{item.title}}</span>
+          <span class="title">{{item.title}}</span>
           <br />
           <!-- 发表内容 -->
           {{item.article}}
@@ -171,6 +171,8 @@ export default {
   background-color: #ddc; /*有图片数据时可去掉*/
 }
 
+
+
 /* 用户名那一大块 */
 .user-time {
   height: 40px;
@@ -184,6 +186,9 @@ export default {
   color: #111;
   font-size: 14px;
 }
+.user:hover{
+text-decoration: underline;
+}
 
 /*用户评论*/
 .user-content {
@@ -193,6 +198,12 @@ export default {
   font-size: 14px;
   margin: 5px 0;
 }
+.user-content:hover{
+  text-decoration: underline;
+}
+.user-content .title{
+  font-weight: 600;
+}
 .user-to span {
   font-weight: 900;
   font-size: 16px;
@@ -201,6 +212,9 @@ export default {
   width: 100px;
   height: 100px;
   margin-right: 5px;
+}
+.user-img:hover{
+  cursor: pointer;
 }
 .like {
   font-size: 12px;

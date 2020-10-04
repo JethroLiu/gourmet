@@ -40,6 +40,7 @@ const routes = [
         path: "/Publish",
         name: "Publish",
         component: () => import("../views/Publish.vue"),
+        redirect:'Publish/PBLtopic/mytopic',
         children: [
             {
                 path: "Vip",
@@ -50,11 +51,24 @@ const routes = [
                 path: "MyBook",
                 name: "MyBook",
                 component: () => import("@/components/Publish/MyBook.vue"),
+               
             },
             {
                 path: "PBLtopic",
                 name: "PBLtopic",
                 component: () => import("@/components/Publish/PBLtopic.vue"),
+                redirect:'/Publish/PBLtopic/mytopic',
+                children:[
+                    {
+                        path:"mytopic",
+                        component:() => import("@/components/Publish/detail/mytopic.vue"),
+                         
+                    },
+                    {
+                        path:"fabu",
+                        component:() => import("@/components/Publish/detail/fabu.vue")
+                      }
+                ]
             },
             {
                 path: "PBLlog",
@@ -70,11 +84,46 @@ const routes = [
                 path: "Favorite",
                 name: "Favorite",
                 component: () => import("@/components/Publish/Favorite.vue"),
+                redirect:'/Publish/Favorite/favorite',
+                children:[
+                    {
+                        path:"favorite",
+                        component:() => import("@/components/Publish/detail/Favorite.vue")
+                    },
+                    {
+                        path:"topic",
+                        component:() => import("@/components/Publish/detail/topic.vue")
+                    },
+                    {
+                        path:"log",
+                        component:() => import("@/components/Publish/detail/log.vue")
+                    },
+                    {
+                        path:"zhaunti",
+                        component:() => import("@/components/Publish/detail/zhaunti.vue")
+                    },
+                    {
+                        path:"caidan",
+                        component:() => import("@/components/Publish/detail/caidan.vue")
+                    },
+                ]
             },
             {
                 path: "MySelf",
                 name: "MySelf",
                 component: () => import("@/components/Publish/MySelf.vue"),
+                redirect:'/Publish/MySelf/myself',
+                children:[
+                    {
+                    path:"myself",
+                    component:() => import("@/components/Publish/detail/Myself.vue"),
+                    meta: { keepAlive: true }
+                },
+                {
+                    path:"adress",
+                    component:() => import("@/components/Publish/detail/adress.vue"),
+                },
+            ]
             },
         ],
     },

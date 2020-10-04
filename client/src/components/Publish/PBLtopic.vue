@@ -5,10 +5,10 @@
         <router-link :to="el.link" v-for="el in title" :key=el.title>{{el.title}}</router-link>
       </div>
       <div>
-         <router-link to="###" class="my-right">发布新话题</router-link>
+         <router-link to="/Publish/PBLtopic/fabu" class="my-right">发布新话题</router-link>
       </div>
-     
     </div>
+     <router-view></router-view>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   data() {
     return {
        title:[
-        {title:'我的话题',link:'###'},
+        {title:'我的话题',link:'/Publish/PBLtopic/mytopic'},
       ]
     }
   },
@@ -43,6 +43,7 @@ export default {
   margin-right: 20px;
   color: #656565;
   padding-bottom: 5px;
+   border-bottom: 2px  solid transparent;
 }
 .my-left a:hover {
   color: #ff6767;

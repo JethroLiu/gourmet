@@ -44,6 +44,11 @@ methods:{
 
 }</script>
 <style  scoped>
+.text div{
+      font-size: 20px;
+    padding-right: 0;
+    color: #999;
+}
 .text{
          display: flex;
 }

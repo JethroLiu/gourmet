@@ -11,7 +11,6 @@
 <style scoped>
 .text{
         font-size: 20px;
-    padding: 100px;
     padding-right: 0;
     color: #999;
 }

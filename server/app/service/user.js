@@ -49,8 +49,9 @@ class UserService extends Service {
 
     async login(logininfo) {
         const { ctx } = this;
-        // console.log(logininfo)
-        return "好久不见";
+        var sql=`select * from myuser where email="${logininfo.email}" and userPwd="${logininfo.userPwd}"`
+        var result=await this.app.mysql.query(sql) 
+        return result
     }
 
     async session1() {
@@ -67,7 +68,6 @@ class UserService extends Service {
         console.log(userinfo,777);//打印前端传过来的数据信息 包括用户输入的验证码、邮箱等所有数据
         // console.log(userinfo.time.toLocaleString())
         let time = userinfo.time;
-        console.log(time.toLocaleString(),9999)
         let insertsq2 = `insert into huati ( time,userPic,title,huati) values ("${userinfo.time}","${userinfo.userPic}","${userinfo.title}","${userinfo.huati}")`;
        
         let result1 = await this.app.mysql.query(insertsq2);

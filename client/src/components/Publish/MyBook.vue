@@ -7,8 +7,8 @@
       <div>
          <router-link to="###" class="my-right">发布新菜单</router-link>
       </div>
-     
     </div>
+     <router-view></router-view>
   </div>
 </template>
 

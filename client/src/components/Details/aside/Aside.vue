@@ -233,11 +233,18 @@
     flex-wrap: wrap;
     border: 1px solid #cccccc;
   }
+  .ximgbox{
+    width: 140px;
+    border:1px solid #ddd;
+    box-sizing: border-box;
   
+  }
   .ximgbox,
   .ximage{
     width: 140px;
     height: 99px;
+    box-sizing: border-box;
+    /* border: 1px transparent #ffffff; */
     
   }
   .ximage:hover{

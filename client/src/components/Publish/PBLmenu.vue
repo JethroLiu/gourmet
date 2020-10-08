@@ -7,8 +7,8 @@
       <div>
          <router-link to="###" class="my-right">创建新菜单</router-link>
       </div>
-     
     </div>
+     <router-view></router-view>
   </div>
 </template>
 
@@ -43,6 +43,7 @@ export default {
   margin-right: 20px;
   color: #656565;
   padding-bottom: 5px;
+   /* border-bottom: 2px  solid transparent; */
 }
 .my-left a:hover {
   color: #ff6767;

@@ -7,8 +7,8 @@
       <div>
          <router-link to="###" class="my-right">发布新菜单</router-link>
       </div>
-     
     </div>
+     <router-view></router-view>
   </div>
 </template>
 
@@ -17,7 +17,7 @@ export default {
   data() {
     return {
        title:[
-        {title:'我的菜谱',link:'###'},{title:'待待审',link:'###'},{title:'退稿箱',link:'###'},{title:'草稿箱',link:'###'}
+        {title:'我的菜谱',link:'###'},{title:'待审核',link:'###'},{title:'退稿箱',link:'###'},{title:'草稿箱',link:'###'}
       ]
     }
   },
@@ -43,6 +43,7 @@ export default {
   margin-right: 20px;
   color: #656565;
   padding-bottom: 5px;
+   border-bottom: 2px  solid transparent;
 }
 .my-left a:hover {
   color: #ff6767;

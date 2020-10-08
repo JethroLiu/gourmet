@@ -8,6 +8,9 @@ import "element-ui/lib/theme-chalk/index.css"; // 全局的css样式
 
 import Vuex from "vuex";
 
+//引入vuex-persistedstate
+import createPersistedState from 'vuex-persistedstate'
+
 Vue.use(ElementUI);
 Vue.use(Vuex);
 
@@ -21,6 +24,8 @@ const store = new Vuex.Store({
             state.myFoodId = obj.n;
         },
     },
+
+
 });
 
 // 配置全局的 axios 基础网址

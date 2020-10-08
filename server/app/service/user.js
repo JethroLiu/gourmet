@@ -24,7 +24,7 @@ class UserService extends Service {
     async register(userinfo) {
         // 判断从前端传过来的数据 先验证码再其它
         const { ctx } = this;
-        console.log(userinfo);//打印前端传过来的数据信息 包括用户输入的验证码、邮箱等所有数据
+        // console.log(userinfo);//打印前端传过来的数据信息 包括用户输入的验证码、邮箱等所有数据
         // console.log(this.ctx.session.verif);//打印显示在服务器上的验证码
         // 验证数据中的数据
         if (userinfo.svg.toUpperCase() !== this.ctx.session.verif.toUpperCase()) {//不区分大小写
@@ -32,10 +32,11 @@ class UserService extends Service {
         } else {
             let selectsql = `select *from myuser where email ="${userinfo.email}"`;
             let result = await this.app.mysql.query(selectsql);
+            // console.log(result)
             if (result[0]) {//数组取ling 数据库中已有该数据
                 return { code: "4002", info: "邮箱已经注册过了" };
             } else {
-                let insertsql = `insert into myuser (email, userPwd, userPic) values ("${userinfo.email}","${userinfo.userPwd}","${userinfo.userPic}")`;
+                let insertsql = `insert into myuser (userSex,email, userPwd, userPic) values ("${userinfo.userSex}","${userinfo.email}","${userinfo.userPwd}","${userinfo.userPic}")`;
                 let result = await this.app.mysql.query(insertsql);
                 if (result.affectedRows > 0) {
                     return { code: "2001", info: "注册成功" };
@@ -48,9 +49,9 @@ class UserService extends Service {
 
     async login(logininfo) {
         const { ctx } = this;
-        let sql = `select *from myuser where email="${logininfo.email}" and userPwd="${logininfo.userPwd}"`;
-        let result = await this.app.mysql.query(sql);
-        return result;
+        var sql=`select * from myuser where email="${logininfo.email}" and userPwd="${logininfo.userPwd}"`
+        var result=await this.app.mysql.query(sql) 
+        return result
     }
 
     async session1() {
@@ -59,6 +60,34 @@ class UserService extends Service {
         let result = await this.app.mysql.query(sql);
         return result;
     }
+
+    // 上传发表话题的数据到数据库 
+    async huati(userinfo) {
+        // 判断从前端传过来的数据 
+        const { ctx } = this;
+        console.log(userinfo,777);//打印前端传过来的数据信息 包括用户输入的验证码、邮箱等所有数据
+        // console.log(userinfo.time.toLocaleString())
+        let time = userinfo.time;
+        let insertsq2 = `insert into huati ( time,userPic,title,huati) values ("${userinfo.time}","${userinfo.userPic}","${userinfo.title}","${userinfo.huati}")`;
+       
+        let result1 = await this.app.mysql.query(insertsq2);
+        return result1
+    }
+    // 获取上传到数据库的话题的数据
+    async gethuati() {
+        const { ctx } = this;
+        let sql = `select *from huati `;
+        var data = await this.app.mysql.query(sql);
+        // console.log(data,112345)
+        // let dataobj = {};
+        // for(let i = 0;i<data.length;i++){
+        //     let dataarr = [];
+        //     console.log(data[i])
+        // }
+        return data;
+    }
 }
+
+
 
 module.exports = UserService;

@@ -1,10 +1,12 @@
 <template>
   <div id="mySelf">
     <div class="my">
-      <div class="my-left">
+      <div class="my-left" >
         <router-link :to="el.link" v-for="el in title" :key=el.title>{{el.title}}</router-link>
       </div>
     </div>
+  <router-view></router-view>
+
   </div>
 </template>
 
@@ -13,7 +15,7 @@ export default {
   data() {
     return {
       title:[
-        {title:'个人资料',link:'###'},{title:'收货地址',link:'###'},{title:'修改密码',link:'###'}
+        {title:'个人资料',link:'/Publish/MySelf/myself'},{title:'收货地址',link:'/Publish/MySelf/adress'},{title:'修改密码',link:'###'}
       ]
     }
   },
@@ -29,7 +31,7 @@ export default {
   display: flex;
   margin-right: 25px;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(238, 238, 238);
+  border-bottom: 2px solid rgb(238, 238, 238);
 }
 .my-left a {
   text-decoration: none;
@@ -39,6 +41,7 @@ export default {
   margin-right: 20px;
   color: #656565;
   padding-bottom: 5px;
+   border-bottom: 2px  solid transparent;
 }
 .my-left a:hover {
   color: #ff6767;

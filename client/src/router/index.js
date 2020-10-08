@@ -40,6 +40,7 @@ const routes = [
         path: "/Publish",
         name: "Publish",
         component: () => import("../views/Publish.vue"),
+        redirect:'Publish/PBLtopic/mytopic',
         children: [
             {
                 path: "Vip",
@@ -50,31 +51,102 @@ const routes = [
                 path: "MyBook",
                 name: "MyBook",
                 component: () => import("@/components/Publish/MyBook.vue"),
+                redirect:'/Publish/MyBook/caipu',
+                children:[
+                    {
+                        path:"caipu",
+                        component:() => import("@/components/Publish/detail/caipu.vue"),
+                         
+                    }
+                ]
+               
             },
             {
                 path: "PBLtopic",
                 name: "PBLtopic",
                 component: () => import("@/components/Publish/PBLtopic.vue"),
+                redirect:'/Publish/PBLtopic/mytopic',
+                children:[
+                    {
+                        path:"mytopic",
+                        component:() => import("@/components/Publish/detail/mytopic.vue"),
+                         
+                    },
+                    {
+                        path:"fabu",
+                        component:() => import("@/components/Publish/detail/fabu.vue")
+                      }
+                ]
             },
             {
                 path: "PBLlog",
                 name: "PBLlog",
                 component: () => import("@/components/Publish/PBLlog.vue"),
+                redirect:'/Publish/PBLlog/log',
+                children:[
+                    {
+                        path:"log",
+                        component:() => import("@/components/Publish/detail/log.vue"),
+                         
+                    }
+                ]
             },
             {
                 path: "PBLmenu",
                 name: "PBLmenu",
                 component: () => import("@/components/Publish/PBLmenu.vue"),
+                redirect:'/Publish/PBLmenu/caidan',
+                children:[
+                    {
+                        path:"caidan",
+                        component:() => import("@/components/Publish/detail/caidan.vue"), 
+                    }
+                ]
             },
             {
                 path: "Favorite",
                 name: "Favorite",
                 component: () => import("@/components/Publish/Favorite.vue"),
+                redirect:'/Publish/Favorite/favorite',
+                children:[
+                    {
+                        path:"favorite",
+                        component:() => import("@/components/Publish/detail/Favorite.vue")
+                    },
+                    {
+                        path:"topic",
+                        component:() => import("@/components/Publish/detail/topic.vue")
+                    },
+                    {
+                        path:"log",
+                        component:() => import("@/components/Publish/detail/log.vue")
+                    },
+                    {
+                        path:"zhaunti",
+                        component:() => import("@/components/Publish/detail/zhaunti.vue")
+                    },
+                    {
+                        path:"caidan",
+                        component:() => import("@/components/Publish/detail/caidan.vue")
+                    },
+                ]
             },
             {
                 path: "MySelf",
                 name: "MySelf",
                 component: () => import("@/components/Publish/MySelf.vue"),
+                redirect:'/Publish/MySelf/myself',
+                children:[
+                    {
+                    path:"myself",
+                    component:() => import("@/components/Publish/detail/Myself.vue"),
+                    meta: { keepAlive: true }
+                },
+                {
+                    path:"adress",
+                    component:() => import("@/components/Publish/detail/adress.vue"),
+                },
+            ]
             },
         ],
     },
@@ -87,25 +159,22 @@ const router = new VueRouter({
 });
 
 // 全局前置守卫 访问拦截
-router.beforeEach((to, from, next) => {
-    // 允许访问首页和登录注册
-    // if (to.path == "/" || to.path == "/MyUser/Login") {
-    //     next();
-    // } else {
-    //     // 查看用户是否登录
-    //     let flag = localStorage.getItem("islogin"); // 取本地缓存查看是否登陆过
-    //     if (flag) {
-    //         next();
-    //     } else {
-    //         next("/Login"); // next 也会触发 beforeEach
-    //     }
-    // }
+router.beforeEach((to1, from, next) => {
+	if (to1.path == "/" || to1.path == "/MyUser/Login" || to1.path == "/MyUser/Register") {
+		next()
 
-    // if (to.path == "/Publish") {
-    //     alert("全局前置守卫拦截了你的访问");
-    //     next("/MyUser/Login");
-    // }
-    next();
+	} else {
+		//判断是否登录过
+		// 如果登录过:放行
+		//如果没登录过:指定他去登录页面
+		var flag = localStorage.getItem("islogin")
+		if (flag) {
+			next()
+		} else {
+            alert("未登录，请先登录")
+			next("/MyUser/Login")
+		}
+	}
 });
 
 export default router;

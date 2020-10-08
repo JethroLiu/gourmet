@@ -14,4 +14,7 @@ module.exports = (app) => {
     router.get("/details",controller.details.details);//详情页
     router.post("/register", controller.user.register);  // 注册
     router.post("/login", controller.user.login);  // 登录
+    // router.post("/mycount", controller.user.mycount); //我的账户设置
+    router.post("/huati", controller.user.huati); //个人话题发表
+    router.get("/gethuati", controller.user.gethuati); //获取个人话题发表数据
 };

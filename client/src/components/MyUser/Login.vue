@@ -34,8 +34,8 @@ export default {
     },
     mounted() {
         // console.log(this.$route)
-        // this.email = this.$route.query.email;
-        // this.userPwd = this.$route.query.userPwd;
+        this.email = this.$route.query.email;
+        this.userPwd = this.$route.query.userPwd;
     },
     methods: {
         toRegister() {
@@ -48,10 +48,6 @@ export default {
             });
             if (loginRes.data.code == 2002) {
                 // 登陆成功,先缓存，再跳转
-                /* 
-                    前端缓存 localstorage sessionStorage cookie
-                    后端缓存 后2前1 前(cookie)
-                */
                 // 前端缓存
                 window.localStorage.setItem("islogin", true);
                 this.$router.push("/");

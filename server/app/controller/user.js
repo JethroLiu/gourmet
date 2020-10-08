@@ -57,6 +57,41 @@ class UserController extends Controller {
         let result = this.ctx.service.user.session1();
         ctx.body = result;
     }
+
+    // 个人发表话题
+    async huati() {
+        const { ctx } = this;
+        // console.log(ctx.request.query, ctx.request.files, ctx.request.body);
+        //处理从客户端发送过来的数据（用户在浏览器输入的数据）
+        if (ctx.request.files) {
+            // console.log(ctx.request.files)
+            let filename = path.basename(this.ctx.request.files[0].filepath);
+            let oldPath = `${this.ctx.request.files[0].filepath}`;
+            let newPath = `${__dirname}/../public/upload/${filename}`;
+            // 移动上传的文件至项目文件夹
+            fs.copyFileSync(oldPath, newPath);
+            fs.unlink(oldPath, function (err) {
+                if (err) {
+                    console.log(err);
+                }
+                // console.log("文件移动成功！");
+            });
+            let imageUrl = `http://localhost:7001/public/upload/${filename}`;
+            this.ctx.request.body.userPic = imageUrl;
+            // 把注册结果传给 service 中的工具 
+            this.ctx.body = await this.ctx.service.user.huati(ctx.request.body);
+            // console.log(ctx.body,9999)
+        }
+    }
+
+     //获取发表话题的数据
+     async gethuati() {
+        const { ctx } = this;
+        ctx.body = await this.ctx.service.user.gethuati();
+        // console.log(ctx.body,9999)
+    }
+
+
 }
 
 module.exports = UserController;
